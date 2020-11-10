@@ -7,14 +7,14 @@ public class IntList {
 		first = f;
 		rest = r;
 	}
-	/**return size by using recursion.*/
+	/**Return the size of intList by using recursion.*/
 	public int size() {
 		if (rest == null) {
 			return 1;
 		}
 		return 1 + this.rest.size();
 	}
-	/**return size by using iteration.*/
+	/**Return the size of intList by using iteration.*/
 	public int iterativeSize() {
 		IntList p = this;
 		int totalSize = 0;
@@ -24,11 +24,27 @@ public class IntList {
 		}
 		return totalSize;
 	}
+	/**Return the ith item of intList by using iteration.*/
+	public int iterativeGet(int i) {
+		IntList p = this;
+		for (int n = 0; n < i; n++) {
+			p = p.rest;
+		}
+		return p.first;
+	}
+	/**Return the ith item of intList by using recursion.*/
+	public int get(int i) {
+		if (i == 0) {
+			return first;
+		}
+		return this.rest.get(i-1);
+	}
 	public static void main(String[] args) {
 		IntList L = new IntList(15, null);
 		L = new IntList(10, L);
 		L = new IntList(5, L);
 		System.out.println(L.iterativeSize());
+		System.out.println(L.get(2));
 	}
 
 }
